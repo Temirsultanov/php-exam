@@ -15,7 +15,7 @@
 
             <form action="pollresult.php" method="POST"  class="addproduct-form">
             <?php
-                
+                $count = 1;
                 foreach($questions as $question){
                     $title = $question['question_title'];
                     $type = $question['question_type'];
@@ -25,16 +25,17 @@
                     ');
                     if ($type == "text") {
                         echo('
-                                <textarea name="question_title" placeholder=": "></textarea>
+                                <textarea name="question'. $count. '" placeholder=": "></textarea>
                             </div>
                         ');
                     }
                     else{
                         echo('
-                                <input type="text" name="question_title" placeholder=": ">
+                                <input type="text" name="question'.$count.'" placeholder=": ">
                             </div>
                         ');
                     }
+                    $count++;
                     
                 }; 
                 
