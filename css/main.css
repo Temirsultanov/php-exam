@@ -498,7 +498,9 @@ h1{
     0 0 0 5px var(--dark);
 }
 .order-form input::placeholder{
+color: #eee;
     font-size: 20px;
+    opacity: 0.6;
 }
 /* Order0 */
 /*  */
@@ -572,7 +574,9 @@ h1{
     border-bottom: 1px solid var(--dark);
 }
 .login__form input::placeholder{
+color: #eee;
     font-size: 20px;
+    opacity: 0.6;
 }
 .login__form input:not([type="submit"]){
     width: 500px;
@@ -642,7 +646,9 @@ h1{
     margin-bottom: 25px;
 }
 .addproduct-form input[type="text"]::placeholder{
+color: #eee;
     color: black;
+    opacity: 0.6;
 }
 .addproduct-form select{
     width: 1000px;
@@ -1247,7 +1253,9 @@ h1{
         padding-left: 15px;
     }
     .addproduct-form input[type="text"]::placeholder{
+color: #eee;
         font-size: 20px;
+        opacity: 0.6;
     }
     .addproduct-form select{
         font-size: 20px;
@@ -1373,7 +1381,9 @@ h1{
         width: 200px;   
     }
     .order-form input::placeholder{
+color: #eee;
         font-size: 18px;
+        opacity: 0.6;
     }
     /* Order0 */
     .order0 h1{
@@ -1506,7 +1516,9 @@ h1{
         font-size: 18px;
     }
     .login__form input::placeholder{
+color: #eee;
         font-size: 18px;
+        opacity: 0.6;
     }
     .login__form .login-submit{
         font-size: 18px;
