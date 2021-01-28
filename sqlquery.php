@@ -9,6 +9,6 @@
     $sql = $_POST['sqlquery'];
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    echo($sql);
+    // echo($sql);
     header('Location: admin.php');
 ?>

@@ -21,11 +21,55 @@
                     $type = $question['question_type'];
                     echo('
                     <div class="input-block">
-                            <label>'.$title.'</label>
+                            <h3>'.$title.'</h3>
                     ');
                     if ($type == "text") {
                         echo('
                                 <textarea name="question'. $count. '" placeholder=": "></textarea>
+                            </div>
+                        ');
+                    }
+                    else if ($type == 'positive_number') {
+                        echo('
+                                <input type="number" placeholder="3" min="0">
+                            </div>
+                        ');
+                    }
+                    else if ($type == 'number') {
+                        echo('
+                                <input type="number" placeholder="3">
+                            </div>
+                        ');
+                    }
+                    else if ($type == 'radio') {
+                        $sql = 'SELECT * from multi_answers where question_id='.$question['question_id'];
+                        $result = $db->query($sql);
+                        $line = $result->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($line as $answer) {
+                            echo($answer['answer']);
+                            echo('
+                                <input type="radio" value="'.$answer['answer'].'">
+                                <label>'.$aswer['answer'].'</label>
+                            ');
+                        }
+                        echo('</div>');
+                    }
+                    else if ($type == 'checkbox') {
+                        $sql = 'SELECT * from multi_answers where question_id='.$question['question_id'];
+                        $result = $db->query($sql);
+                        $line = $result->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($line as $answer) {
+                            echo($answer['answer']);
+                            echo('
+                                <input type="checkbox" value="'.$answer['answer'].'">
+                                <label>'.$aswer['answer'].'</label>
+                            ');
+                        }
+                        echo('</div>');
+                    }
+                    else if ($type == 'number') {
+                        echo('
+                                <input type="number" placeholder="3">
                             </div>
                         ');
                     }

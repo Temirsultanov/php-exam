@@ -30,7 +30,6 @@
         $stmt->bindValue(':question_type', $types[$i]);
         $stmt->bindValue(':question_title', $titles[$i]);
         $stmt->execute();
-
     }
 
 ?>
@@ -46,11 +45,29 @@
             </div>
         </header>
         <div class="ordersuccess">
-            <h1>Опрос успешно создан!</h1>
-            <h3>Ссылка на опрос: 
-                http://php-exam.std-937.ist.mospolytech.ru/poll.php?id=<?php echo($poll_id); ?>
-            </h3>
-            <a class="link-in-home" href="poll.php?id=<?php echo($poll_id); ?>">http://php-exam.std-937.ist.mospolytech.ru/poll.php?id=<?php echo($poll_id); ?></a>
+            <h2>Выберите количества ответов для checkbox и radio</h2>
+            <form action="createpoll3.php" method="POST"  class="addproduct-form">
+                <?php
+                    $sql = 'SELECT * from questions where poll_id=' . $poll_id;
+                    $result = $db->query($sql);
+                    $line = $result->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    for ($i = 0; $i < count($line); $i++) {
+                        if ($types[$i] == 'radio' || $types[$i] == 'checkbox') {
+                            $cur_question[] = $line[$i]['question_id'];
+                            echo('
+                            <div class="input-block">
+                                <label>' . $line[$i]['question_title'] . '</label>
+                                <input name="count'.$i.'" type="text" placeholder="Количество ответов">
+                            </div>
+                            ');
+                        }
+                    }
+                    
+                    $_SESSION['current_questions'] = $cur_question;
+                ?>
+                <button class="addform-button" type="submit">Создать</button>
+            </form>
         </div>
 </section>
 <?php include('templates/_footer.php') ?>
